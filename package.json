@@ -18,10 +18,10 @@
   },
   "homepage": "https://github.com/MJochim/webdav-editor#readme",
   "dependencies": {
-    "marked": "^0.5.2",
+    "marked": "^4.0.5",
     "monaco-editor": "^0.15.6",
     "simplemde": "^1.11.2",
-    "webdav": "^2.2.0"
+    "webdav": "^4.7.0"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",

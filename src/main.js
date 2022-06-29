@@ -17,10 +17,14 @@ async function testCredentials (webdavClient) {
 }
 
 async function attemptLogin(event) {
-    const webdavClient = createClient(config.webdavUrl, {
-        username: event.detail.username,
-        password: event.detail.password,
-    });
+    let url = config.webdavUrl;
+    let username = event.detail.username;
+    let atIndex = username.indexOf("@")
+    if(atIndex > 0) {
+        url = "https://" + username.substring(atIndex+1, username.length);
+        username = username.substring(0, atIndex);
+    }
+    const webdavClient = createClient(url, {username, password: event.detail.password});
 
     if (await testCredentials(webdavClient)) {
         const fileListView = new FileListView(container, webdavClient, config.rootDirectoryName);
